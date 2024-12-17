@@ -1,0 +1,82 @@
+/* Title */
+.oe_title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+    border-radius: 10px;
+}
+
+/* KPI Cards */
+.o_stat_card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.o_stat_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.o_stat_value {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.o_stat_label {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+/* Charts */
+.chart-container {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    height: 400px; /* Adjust height as needed */
+}
+
+/* Flexbox Layout */
+.o_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 0 -15px;
+}
+
+.o_col {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.o_col-3 {
+    flex: 1;
+    min-width: 250px;
+}
+
+.o_col-6 {
+    flex: 1;
+    min-width: 300px;
+}
+
+.o_data_tiles .o_stat_info {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.average_wait_time .o_stat_value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e67e22;
+}

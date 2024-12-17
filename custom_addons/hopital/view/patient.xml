@@ -1,0 +1,67 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree class="o_hospital_patient_tree">
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form class="o_hospital_patient_form">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" invisible="state!='draft'" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done" invisible="state!='confirm'" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state!='done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" class="o_patient_name"/>
+                        <field name="reference" readonly="True"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                        <field name="note"/>
+                        <field name="image" widget="image"/>
+                    </group>
+                    <notebook>
+                        <page string="Appointments">
+                            <field name="appointment_ids">
+                                <tree>
+                                    <field name="date_appointment"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_hospital_root" name="Hospital" sequence="1"/>
+    <menuitem id="menu_hospital_patient" name="Patients" parent="menu_hospital_root" sequence="10" action="action_hospital_patient"/>
+</odoo>

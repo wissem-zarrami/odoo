@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient,access.hospital.patient,model_hospital_patient,,1,1,1,1
+access_hospital_appointment,access.hospital.appointment,model_hospital_appointment,,1,1,1,1
+access_hospital_doctor,access.hospital.doctor,model_hospital_doctor,,1,1,1,1
+access_hospital_dashboard,hospital.dashboard,model_hospital_dashboard,,1,0,0,0
+access_hospital_room,hospital.room,model_hospital_room,,1,1,1,1
+access_hospital_lab_request_user,hospital.lab.request user,model_hospital_lab_request,base.group_user,1,0,0,0
+access_hospital_lab_request_manager,hospital.lab.request manager,model_hospital_lab_request,base.group_system,1,1,1,1
+access_hospital_lab_test_user,hospital.lab.test user,model_hospital_lab_test,base.group_user,1,0,0,0
+access_hospital_lab_test_manager,hospital.lab.test manager,model_hospital_lab_test,base.group_system,1,1,1,1

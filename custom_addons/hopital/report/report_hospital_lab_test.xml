@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Report Template -->
+    <template id="report_hospital_lab_test">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Lab Test Report</h2>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Test Name:</strong></td>
+                            <td><t t-esc="doc.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lab Request:</strong></td>
+                            <td><t t-esc="doc.lab_request_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Result:</strong></td>
+                            <td><t t-esc="doc.result"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date Conducted:</strong></td>
+                            <td><t t-esc="doc.date_conducted"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status:</strong></td>
+                            <td><t t-esc="doc.state"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Definition -->
+    <report
+        id="report_lab_test"
+        model="hospital.lab.test"
+        string="Lab Test Report"
+        report_type="qweb-pdf"
+        name="hopital.report_hospital_lab_test"
+        file="hopital.report_hospital_lab_test"
+        attachment_use="False"
+    />
+</odoo>

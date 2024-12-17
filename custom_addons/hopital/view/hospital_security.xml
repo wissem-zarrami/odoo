@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Access Control List for hospital.dashboard -->
+    <record id="access_hospital_dashboard_user" model="ir.model.access">
+        <field name="name">hospital.dashboard user</field>
+        <field name="model_id" ref="model_hospital_dashboard"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

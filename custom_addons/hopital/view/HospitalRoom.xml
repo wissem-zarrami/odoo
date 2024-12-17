@@ -1,0 +1,80 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_hospital_room_tree" model="ir.ui.view">
+        <field name="name">hospital.room.tree</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <tree string="Hospital Rooms">
+                <field name="name"/>
+                <field name="room_type"/>
+                <field name="capacity"/>
+                <field name="equipment"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hospital_room_form" model="ir.ui.view">
+        <field name="name">hospital.room.form</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Room">
+                <group>
+                    <field name="name"/>
+                    <field name="room_type"/>
+                    <field name="capacity"/>
+                    <field name="equipment"/>
+                </group>
+                <group>
+                    <field name="appointment_ids" context="{'default_room_id': active_id}">
+                        <tree string="Appointments">
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_hospital_room_search" model="ir.ui.view">
+        <field name="name">hospital.room.search</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <search string="Hospital Rooms">
+                <field name="name"/>
+                <field name="room_type"/>
+                <field name="capacity"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hospital_room" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hospital_room_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first room
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_hospital_root" name="Hospital"/>
+
+    <menuitem id="menu_hospital_room"
+              name="Rooms"
+              parent="menu_hospital_root"
+            />
+    <menuitem id="menu_hospital_rooom"
+              name="Room"
+              parent="menu_hospital_room"
+              action="action_hospital_room"/>
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+    <!-- Menu Item for Lab Tests -->
+    <menuitem id="menu_hospital_lab_test" name="Lab Tests" parent="menu_hospital_root"/>
+
+    <!-- Action for Lab Test List -->
+    <record id="action_hospital_lab_test" model="ir.actions.act_window">
+        <field name="name">Lab Tests</field>
+        <field name="res_model">hospital.lab.test</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hospital_lab_test_tree"/>
+        <field name="help" type="html">
+            <p>
+                Manage and view lab tests here.
+            </p>
+        </field>
+    </record>
+
+    <!-- Form View for Lab Test -->
+    <record id="view_hospital_lab_test_form" model="ir.ui.view">
+        <field name="name">hospital.lab.test.form</field>
+        <field name="model">hospital.lab.test</field>
+        <field name="arch" type="xml">
+            <form string="Lab Test">
+                <header>
+                    <button name="action_mark_completed" type="object" string="Mark as Completed" class="btn-success"
+                            invisible="state != 'pending'"/>
+                    <button name="action_mark_pending" type="object" string="Mark as Pending" class="btn-secondary"
+                            invisible="state != 'completed'"/>
+                     <button name="action_print_report" type="object" string="Print Report" class="btn-primary" invisible="state != 'completed'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="lab_request_id"/>
+                        <field name="result"/>
+                        <field name="notes"/>
+                        <field name="date_conducted"/>
+                        <field name="state"/>
+                        <field name="is_overdue"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Lab Test -->
+    <record id="view_hospital_lab_test_tree" model="ir.ui.view">
+        <field name="name">hospital.lab.test.tree</field>
+        <field name="model">hospital.lab.test</field>
+        <field name="arch" type="xml">
+            <tree string="Lab Tests">
+                <field name="name"/>
+                <field name="lab_request_id"/>
+                <field name="result"/>
+                <field name="date_conducted"/>
+                <field name="state"/>
+                <field name="is_overdue"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Menu Item to open the Lab Test List -->
+    <menuitem id="menu_hospital_lab_test_list" name="Lab Tests" parent="menu_hospital_lab_test" action="action_hospital_lab_test"/>
+</odoo>

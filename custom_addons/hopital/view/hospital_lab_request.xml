@@ -1,0 +1,73 @@
+<odoo>
+    <!-- Menu Item for Lab Requests -->
+
+
+    <!-- Action for Lab Request List -->
+    <record id="action_hospital_lab_request" model="ir.actions.act_window">
+        <field name="name">Lab Requests</field>
+        <field name="res_model">hospital.lab.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hospital_lab_request_tree"/>
+        <field name="help" type="html">
+            <p>Create and manage lab requests here.</p>
+        </field>
+    </record>
+
+    <!-- Form View for Lab Request -->
+    <record id="view_hospital_lab_request_form" model="ir.ui.view">
+    <field name="name">hospital.lab.request.form</field>
+    <field name="model">hospital.lab.request</field>
+    <field name="arch" type="xml">
+        <form string="Lab Request" class="o_lab_request_form">
+
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary o_lab_request_button"
+                invisible="state == 'confirmed'" />
+
+        <!-- Done Button -->
+        <button name="action_done" type="object" string="Done" class="btn-success o_lab_request_button"
+                invisible="state == 'done'" />
+
+        <!-- Print Report Button -->
+        <button name="action_print_report" type="object" string="Print Report"  class="btn-secondary o_lab_request_button"
+                invisible="state == 'done'" />
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="test_type"/>
+                        <field name="date_requested"/>
+                        <field name="state"/>
+                        <field name="lab_test_ids"/>
+                        <field name="total_tests"/>
+                        <field name="patient_name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Lab Request -->
+    <record id="view_hospital_lab_request_tree" model="ir.ui.view">
+        <field name="name">hospital.lab.request.tree</field>
+        <field name="model">hospital.lab.request</field>
+        <field name="arch" type="xml">
+            <tree string="Lab Requests" class="o_lab_request_tree">
+                <field name="name" string="Request Name"/>
+                <field name="patient_id" string="Patient"/>
+                <field name="doctor_id" string="Doctor"/>
+                <field name="test_type" string="Test Type"/>
+                <field name="date_requested" string="Date Requested"/>
+                <field name="state" string="Status"/>
+                <field name="total_tests" string="Total Tests"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Menu Item to open the Lab Request List -->
+    <menuitem id="menu_hospital_lab_request_list" name="Lab Requests" parent="menu_hospital_lab_test" action="action_hospital_lab_request"/>
+</odoo>

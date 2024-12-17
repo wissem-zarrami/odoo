@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Calendar view for room availability -->
+    <record id="view_hospital_room_calendar" model="ir.ui.view">
+        <field name="name">hospital.room.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Room Availability" date_start="start_time" date_stop="end_time" color="room_id">
+                <field name="room_id"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Action for the calendar view -->
+    <record id="action_hospital_room_calendar" model="ir.actions.act_window">
+        <field name="name">Room Availability</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="view_hospital_room_calendar"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu item for the room availability calendar -->
+    <menuitem id="menu_hospital_room_calendar" name="Room Availability" parent="menu_hospital_room" action="action_hospital_room_calendar" sequence="2"/>
+</odoo>
